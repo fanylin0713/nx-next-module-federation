@@ -1,4 +1,11 @@
+import { useState } from 'react';
+import dynamic from 'next/dynamic';
+
+const BuyButton = dynamic(() => import('cart/buy-button'));
+
 export function Index() {
+  const [count, setCount] = useState<number>(0);
+
   /*
    * Replace the elements below with your own.
    *
@@ -14,6 +21,14 @@ export function Index() {
               Welcome ec-store 👋
             </h1>
           </div>
+
+          <p className="mt-5">
+            Item Count: <strong>{count}</strong>
+          </p>
+
+          <BuyButton onClick={() => setCount((i) => i + 1)}>
+            Add to Cart
+          </BuyButton>
 
           <div id="hero" className="rounded">
             <div className="text-container">
